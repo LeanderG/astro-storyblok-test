@@ -7,7 +7,7 @@ import basicSsl from "@vitejs/plugin-basic-ssl";
 export default defineConfig({
   integrations: [
     storyblok({
-      accessToken: "c9LJRPJUK3jg1Q6HRROErwtt",
+      accessToken: import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN,
       components: {
         page: "storyblok/Page",
         feature: "storyblok/Feature",

@@ -16,14 +16,18 @@ export async function getStaticPaths() {
 
   let links = data.links;
   links = Object.values(links);
+
   return links.map((link) => {
+    link.slug = link.slug == "home" ? undefined : link.slug; // Storyblok can't have a root slug, so we alias /home instead
     return {
       params: { path: link.slug },
     };
   });
 }
 
-const { path } = Astro.params;
+let { path } = Astro.params;
+
+path = path == undefined ? "home" : path; // undo previous alias
 
 const storyblokApi = useStoryblokApi();
 
