@@ -9,6 +9,7 @@ export default defineConfig({
   integrations: [
     storyblok({
       accessToken: import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN,
+      bridge: import.meta.env.VITE_ASTRO_SSR === "true" || import.meta.env.DEV,
       components: {
         page: "storyblok/Page",
         feature: "storyblok/Feature",
