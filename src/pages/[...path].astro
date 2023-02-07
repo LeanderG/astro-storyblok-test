@@ -1,5 +1,6 @@
 ---
 import { ISbResult, ISbStoryData, useStoryblokApi } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import {
   HeaderStoryblok,
   PageStoryblok,
@@ -44,5 +45,9 @@ const header: ISbStoryData<HeaderStoryblok> = headerData.story;
 ---
 
 <BaseLayout>
-  <Page blok={story.content} headerBlok={header.content} path={path} />
+  <StoryblokComponent
+    blok={story.content}
+    headerBlok={header.content}
+    path={path}
+  />
 </BaseLayout>
