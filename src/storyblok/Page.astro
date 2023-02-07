@@ -13,15 +13,9 @@ interface Props {
   path: string;
 }
 const { blok, headerBlok, path } = Astro.props;
-
-const version = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
-
-const random = Math.random();
 ---
 
 <Header blok={headerBlok} path={path} />
-Version: {version}<br />
-Random: {random}
 <main {...storyblokEditable(blok)}>
   {
     blok.body?.map((blok) => {
