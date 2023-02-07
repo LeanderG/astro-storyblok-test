@@ -1,0 +1,29 @@
+---
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+const renderedRichText = renderRichText(blok.richtext);
+---
+
+<style is:global>
+  .richtext h1 {
+    font-size: 4rem;
+    line-height: 1;
+  }
+  .richtext h2 {
+    font-size: 2rem;
+  }
+</style>
+<section class="bg-petrol" {...storyblokEditable(blok)}>
+  <div class="container pt-24 min-h-[calc(100vh-100px)]">
+    <div class="richtext text-white" set:html={renderedRichText} />
+    <div>
+      {
+        blok.inhalt?.map((blok) => {
+          return <StoryblokComponent blok={blok} />;
+        })
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,100 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import ComdirectLogo from "../components/ComdirectLogo.astro";
+import { HeaderStoryblok } from "../generated/component-types-sb";
+
+interface Props {
+  blok: HeaderStoryblok;
+  path: string;
+}
+
+const { blok, path } = Astro.props;
+
+const segments = path.match(/[^\/]+/g);
+
+const listItems = blok.navigation_items.map(getNavigationItems(0));
+
+function getNavigationItems(segmentId: number) {
+  return (navigation_item) => {
+    const cached_url = navigation_item.link.cached_url; // internal url
+    const url = navigation_item.link.url; // external url
+    const text = navigation_item.text;
+    const target = navigation_item.link.target;
+
+    const href = url || "/" + cached_url;
+
+    const isActive =
+      segments?.[segmentId] !== undefined &&
+      segments?.[segmentId] === cached_url.match(/[^\/]+/g)?.[segmentId];
+
+    let subnav = navigation_item.subnavigation_items.map(
+      getNavigationItems(segmentId + 1)
+    );
+    return { href, text, isActive, target, subnav };
+  };
+}
+---
+
+<style>
+  .logo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #fff500;
+  }
+</style>
+
+<header class="bg-petrol" {...storyblokEditable(blok)}>
+  <div class="mx-72">
+    <div class="relative bg-gelb w-36 py-5">
+      <a href="/" class="logo">
+        <ComdirectLogo />
+      </a>
+    </div>
+    <nav>
+      <ul class="flex gap-10 mt-2 py-2">
+        {
+          listItems.map((item) => (
+            <li>
+              <a
+                class={
+                  (item.isActive
+                    ? "text-gelb"
+                    : "text-white focus:text-gruen") +
+                  " hover:text-gelb font-medium"
+                }
+                href={item.href}
+                target={item.target}
+              >
+                {item.text}
+              </a>
+              {item.isActive && item.subnav.length > 0 && (
+                <ul>
+                  {item.subnav.map((subnavItem) => (
+                    <li>
+                      <a
+                        class={
+                          subnavItem.isActive
+                            ? "text-gelb"
+                            : "text-white focus:text-gruen" +
+                              " hover:text-gelb font-medium"
+                        }
+                        href={subnavItem.href}
+                        target={subnavItem.target}
+                      >
+                        {subnavItem.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

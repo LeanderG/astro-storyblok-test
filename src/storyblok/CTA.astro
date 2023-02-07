@@ -1,0 +1,15 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<a
+  {...storyblokEditable(blok)}
+  type="button"
+  class="bg-gelb text-black py-3 px-5 rounded-full block mt-8 w-fit mx-auto focus:shadow-fokus focus:outline-black focus:outline-2 focus:outline"
+  href={blok.link.cached_url}
+  target={blok.link.target}
+>
+  {blok.text}
+</a>

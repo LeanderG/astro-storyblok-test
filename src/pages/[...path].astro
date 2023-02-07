@@ -1,0 +1,43 @@
+---
+import { ISbResult, ISbStoryData, useStoryblokApi } from "@storyblok/astro";
+import {
+  HeaderStoryblok,
+  PageStoryblok,
+} from "../generated/component-types-sb";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Page from "../storyblok/Page.astro";
+
+export async function getStaticPaths() {
+  const storyblokApi = useStoryblokApi();
+
+  const { data } = await storyblokApi.get("cdn/links", {
+    version: "draft",
+  });
+  let links = data.links;
+  links = Object.values(links);
+  return links.map((link) => {
+    return {
+      params: { path: link.slug },
+    };
+  });
+}
+
+const { path } = Astro.params;
+
+const storyblokApi = useStoryblokApi();
+
+const { data: headerData } = await storyblokApi.get(`cdn/stories/header`, {
+  version: "draft",
+});
+
+const { data } = await storyblokApi.get(`cdn/stories/${path}`, {
+  version: "draft",
+});
+
+const story: ISbStoryData<PageStoryblok> = data.story;
+const header: ISbStoryData<HeaderStoryblok> = headerData.story;
+---
+
+<BaseLayout>
+  <Page blok={story.content} headerBlok={header.content} path={path} />
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import {
+  HeaderStoryblok,
+  PageStoryblok,
+} from "../generated/component-types-sb";
+import Header from "./Header.astro";
+
+interface Props {
+  blok: PageStoryblok;
+  headerBlok: HeaderStoryblok;
+  path: string;
+}
+const { blok, headerBlok, path } = Astro.props;
+---
+
+<Header blok={headerBlok} path={path} />
+<main {...storyblokEditable(blok)}>
+  {
+    blok.body?.map((blok) => {
+      return <StoryblokComponent blok={blok} />;
+    })
+  }
+</main>
