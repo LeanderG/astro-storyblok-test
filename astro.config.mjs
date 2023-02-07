@@ -2,7 +2,13 @@ import { defineConfig } from "astro/config";
 import storyblok from "@storyblok/astro";
 import tailwind from "@astrojs/tailwind";
 import basicSsl from "@vitejs/plugin-basic-ssl";
+import cloudflare from "@astrojs/cloudflare";
 
+console.log(
+  "Storyblok API Version:",
+  import.meta.env.VITE_STORYBLOK_API_VERSION
+);
+console.log("Astro SSR Mode:", import.meta.env.VITE_ASTRO_SSR);
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -26,4 +32,6 @@ export default defineConfig({
       https: true,
     },
   },
+  output: import.meta.env.VITE_ASTRO_SSR === "true" ? "server" : undefined,
+  adapter: import.meta.env.VITE_ASTRO_SSR === "true" ? cloudflare() : undefined,
 });

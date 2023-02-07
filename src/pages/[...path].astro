@@ -18,26 +18,29 @@ export async function getStaticPaths() {
   let links = data.links;
   links = Object.values(links);
 
-  return links.map((link) => {
-    link.slug = link.slug == "home" ? undefined : link.slug; // Storyblok can't have a root slug, so we alias /home instead
+  const paths = links.map((link) => {
     return {
       params: { path: link.slug },
     };
   });
+
+  paths.push({ params: { path: undefined } });
+
+  return paths;
 }
 
 let { path } = Astro.params;
 
-path = path == undefined ? "home" : path; // undo previous alias
+path = path == undefined ? "home" : path;
 
 const storyblokApi = useStoryblokApi();
 
 const { data: headerData } = await storyblokApi.get(`cdn/stories/header`, {
-  version: "draft",
+  version: import.meta.env.VITE_STORYBLOK_API_VERSION,
 });
 
 const { data } = await storyblokApi.get(`cdn/stories/${path}`, {
-  version: "draft",
+  version: import.meta.env.VITE_STORYBLOK_API_VERSION,
 });
 
 const story: ISbStoryData<PageStoryblok> = data.story;
