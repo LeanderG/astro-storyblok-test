@@ -13,9 +13,15 @@ interface Props {
   path: string;
 }
 const { blok, headerBlok, path } = Astro.props;
+
+const version = import.meta.env.VITE_STORYBLOK_API_VERSION;
+const ssr = import.meta.env.VITE_ASTRO_SSR;
 ---
 
 <Header blok={headerBlok} path={path} />
+SSR:{ssr}
+<br />
+Version: {version}
 <main {...storyblokEditable(blok)}>
   {
     blok.body?.map((blok) => {
