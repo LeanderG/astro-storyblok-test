@@ -1,29 +1,30 @@
 ---
 import { renderRichText, storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-
+import Richtext from "../components/Richtext.astro";
+import { HeroStageStoryblok } from "../generated/component-types-sb";
+interface Props {
+  blok: HeroStageStoryblok;
+}
 const { blok } = Astro.props;
-const renderedRichText = renderRichText(blok.richtext);
 ---
 
-<style is:global>
-  .richtext h1 {
-    font-size: 4rem;
-    line-height: 1;
-  }
-  .richtext h2 {
-    font-size: 2rem;
-  }
-</style>
-<section class="bg-petrol" {...storyblokEditable(blok)}>
-  <div class="container pt-24 min-h-[calc(100vh-100px)]">
-    <div class="richtext text-white" set:html={renderedRichText} />
-    <div>
-      {
-        blok.inhalt?.map((blok) => {
-          return <StoryblokComponent blok={blok} />;
-        })
-      }
+<section class="bg-petrol relative" {...storyblokEditable(blok)}>
+  <div class="min-h-[calc(100vh-100px)]">
+    <img
+      src={blok.foto.filename}
+      alt=""
+      class="h-full object-cover w-full absolute brightness-50"
+    />
+    <div class="z-0 container py-24 h-full absolute">
+      <Richtext richtext={blok.richtext} />
+      <div>
+        {
+          blok.inhalt?.map((blok) => {
+            return <StoryblokComponent blok={blok} />;
+          })
+        }
+      </div>
     </div>
   </div>
 </section>

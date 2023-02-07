@@ -1,0 +1,21 @@
+---
+import { renderRichText } from "@storyblok/astro";
+
+interface Props {
+  richtext: any;
+}
+
+const { richtext } = Astro.props;
+const renderedRichText = renderRichText(richtext);
+---
+
+<style is:global>
+  .richtext h1 {
+    font-size: 4rem;
+    line-height: 1;
+  }
+  .richtext h2 {
+    font-size: 2rem;
+  }
+</style>
+<div class="richtext text-white" set:html={renderedRichText} />
