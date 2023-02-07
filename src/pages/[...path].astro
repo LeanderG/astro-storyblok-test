@@ -13,6 +13,7 @@ export async function getStaticPaths() {
   const { data } = await storyblokApi.get("cdn/links", {
     version: "draft",
   });
+
   let links = data.links;
   links = Object.values(links);
   return links.map((link) => {
