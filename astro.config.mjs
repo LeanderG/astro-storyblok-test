@@ -27,7 +27,6 @@ export default defineConfig({
       https: true,
     },
   },
-  output: import.meta.env.PUBLIC_ASTRO_SSR === "true" ? "server" : undefined,
-  adapter:
-    import.meta.env.PUBLIC_ASTRO_SSR === "true" ? cloudflare() : undefined,
+  output: import.meta.env.ASTRO_SSR === "true" ? "server" : undefined,
+  adapter: import.meta.env.ASTRO_SSR === "true" ? cloudflare() : undefined,
 });

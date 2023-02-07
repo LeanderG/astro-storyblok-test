@@ -14,8 +14,8 @@ interface Props {
 }
 const { blok, headerBlok, path } = Astro.props;
 
-const version = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
-const ssr = import.meta.env.PUBLIC_ASTRO_SSR;
+const version = import.meta.env.STORYBLOK_API_VERSION;
+const ssr = import.meta.env.ASTRO_SSR;
 ---
 
 <Header blok={headerBlok} path={path} />
