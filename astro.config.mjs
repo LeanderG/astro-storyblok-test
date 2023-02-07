@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import storyblok from "@storyblok/astro";
 import tailwind from "@astrojs/tailwind";
 import basicSsl from "@vitejs/plugin-basic-ssl";
-import cloudflare from "@astrojs/cloudflare";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,5 +29,5 @@ export default defineConfig({
     },
   },
   output: import.meta.env.VITE_ASTRO_SSR === "true" ? "server" : undefined,
-  adapter: import.meta.env.VITE_ASTRO_SSR === "true" ? cloudflare() : undefined,
+  adapter: import.meta.env.VITE_ASTRO_SSR === "true" ? vercel() : undefined,
 });
