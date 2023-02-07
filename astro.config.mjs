@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import storyblok from "@storyblok/astro";
 import tailwind from "@astrojs/tailwind";
 import basicSsl from "@vitejs/plugin-basic-ssl";
-import vercel from "@astrojs/vercel";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
