@@ -36,11 +36,11 @@ path = path == undefined ? "home" : path;
 const storyblokApi = useStoryblokApi();
 
 const { data: headerData } = await storyblokApi.get(`cdn/stories/header`, {
-  version: import.meta.env.STORYBLOK_API_VERSION,
+  version: import.meta.env.PUBLIC_STORYBLOK_API_VERSION,
 });
 
 const { data } = await storyblokApi.get(`cdn/stories/${path}`, {
-  version: import.meta.env.STORYBLOK_API_VERSION,
+  version: import.meta.env.PUBLIC_STORYBLOK_API_VERSION,
 });
 
 const story: ISbStoryData<PageStoryblok> = data.story;
