@@ -95,6 +95,53 @@
       "icon": null
     },
     {
+      "name": "Footer",
+      "display_name": null,
+      "created_at": "2023-02-12T19:52:58.253Z",
+      "updated_at": "2023-02-12T20:03:19.487Z",
+      "id": 3430569,
+      "schema": {
+        "first_list": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "link_wrapper"
+          ]
+        },
+        "second_list": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "link_wrapper"
+          ]
+        },
+        "third_list": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "link_wrapper"
+          ]
+        },
+        "copyright": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Footer",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
       "name": "global",
       "display_name": null,
       "created_at": "2023-02-01T15:55:00.124Z",
@@ -198,6 +245,34 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "hero_stage",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "link_wrapper",
+      "display_name": null,
+      "created_at": "2023-02-12T19:57:28.437Z",
+      "updated_at": "2023-02-12T19:59:23.389Z",
+      "id": 3430572,
+      "schema": {
+        "text": {
+          "type": "text",
+          "pos": 0
+        },
+        "link": {
+          "type": "multilink",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "link_wrapper",
       "component_group_uuid": null,
       "color": null,
       "icon": null

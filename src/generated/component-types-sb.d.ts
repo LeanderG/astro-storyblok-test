@@ -56,6 +56,16 @@ export interface FeatureStoryblok {
   [k: string]: any;
 }
 
+export interface FooterStoryblok {
+  first_list?: LinkWrapperStoryblok[];
+  second_list?: LinkWrapperStoryblok[];
+  third_list?: LinkWrapperStoryblok[];
+  copyright?: string;
+  _uid: string;
+  component: "Footer";
+  [k: string]: any;
+}
+
 export interface GlobalStoryblok {
   _uid: string;
   component: "global";
@@ -83,6 +93,14 @@ export interface HeroStageStoryblok {
   inhalt?: any[];
   _uid: string;
   component: "hero_stage";
+  [k: string]: any;
+}
+
+export interface LinkWrapperStoryblok {
+  text?: string;
+  link?: MultilinkStoryblok;
+  _uid: string;
+  component: "link_wrapper";
   [k: string]: any;
 }
 

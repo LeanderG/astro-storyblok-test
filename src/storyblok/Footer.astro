@@ -1,0 +1,59 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import ComdirectLogoFooter from "../components/ComdirectLogoFooter.astro";
+import { FooterStoryblok } from "../generated/component-types-sb";
+
+interface Props {
+  blok: FooterStoryblok;
+}
+
+const { blok } = Astro.props;
+console.log({ blok });
+---
+
+<footer class="bg-petrol pt-16 pb-6" {...storyblokEditable(blok)}>
+  <div class="container max-w-screen-lg mx-auto">
+    <div
+      class="flex flex-col lg:flex-row justify-between gap-8 lg:gap-6 text-sm"
+    >
+      <div><ComdirectLogoFooter /></div>
+      <div class="flex lg:flex-col flex-row gap-3 lg:gap-1 flex-wrap">
+        {
+          blok.first_list.map((link) => (
+            <a
+              class="block text-white  focus:text-gruen focus:underline hover:underline hover:text-gruen"
+              href="#"
+            >
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
+      <div class="flex lg:flex-col flex-row gap-3 lg:gap-1 flex-wrap">
+        {
+          blok.second_list.map((link) => (
+            <a
+              class="block text-white  focus:text-gruen focus:underline hover:underline hover:text-gruen"
+              href="#"
+            >
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
+      <div class="flex lg:flex-col flex-row gap-3 lg:gap-1 flex-wrap">
+        {
+          blok.third_list.map((link) => (
+            <a
+              class="block text-white  focus:text-gruen focus:underline hover:underline hover:text-gruen"
+              href="#"
+            >
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="text-gray-400 text-sm my-6">{blok.copyright}</div>
+  </div>
+</footer>
