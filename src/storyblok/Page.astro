@@ -2,30 +2,28 @@
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import {
+  FooterStoryblok,
   HeaderStoryblok,
   PageStoryblok,
 } from "../generated/component-types-sb";
+import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 
 interface Props {
   blok: PageStoryblok;
   headerBlok: HeaderStoryblok;
+  footerBlok: FooterStoryblok;
   path: string;
 }
-const { blok, headerBlok, path } = Astro.props;
-
-const version = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
-
-const random = Math.random();
+const { blok, headerBlok, path, footerBlok } = Astro.props;
 ---
 
 <Header blok={headerBlok} path={path} />
-Version: {version}<br />
-Random: {random}
-<main {...storyblokEditable(blok)}>
+<main {...storyblokEditable(blok)} class="bg-white pb-24">
   {
     blok.body?.map((blok) => {
       return <StoryblokComponent blok={blok} />;
     })
   }
 </main>
+<Footer blok={footerBlok} />

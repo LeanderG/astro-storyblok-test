@@ -18,6 +18,7 @@ export default defineConfig({
         CTA: "storyblok/CTA",
         header: "storyblok/Header",
         hero_stage: "storyblok/HeroStage",
+        footer: "storyblok/Footer",
       },
     }),
     tailwind(),
