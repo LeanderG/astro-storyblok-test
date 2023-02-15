@@ -61,6 +61,8 @@ export interface FooterStoryblok {
   second_list?: LinkWrapperStoryblok[];
   third_list?: LinkWrapperStoryblok[];
   copyright?: string;
+  socials?: IconLinkStoryblok[];
+  logo?: AssetStoryblok;
   _uid: string;
   component: "Footer";
   [k: string]: any;
@@ -81,6 +83,7 @@ export interface GridStoryblok {
 }
 
 export interface HeaderStoryblok {
+  logo: AssetStoryblok;
   navigation_items?: NavigationLinkStoryblok[];
   _uid: string;
   component: "header";
@@ -93,6 +96,14 @@ export interface HeroStageStoryblok {
   inhalt?: any[];
   _uid: string;
   component: "hero_stage";
+  [k: string]: any;
+}
+
+export interface IconLinkStoryblok {
+  icon?: AssetStoryblok;
+  link?: MultilinkStoryblok;
+  _uid: string;
+  component: "icon_link";
   [k: string]: any;
 }
 

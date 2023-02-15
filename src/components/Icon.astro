@@ -1,0 +1,23 @@
+---
+export interface Props {
+  // icon name from the src/svg folder
+  icon?: string;
+  // url to an icon
+  filename?: string;
+}
+
+const { icon, filename, ...attributes } = Astro.props as Props;
+let innerHTML: string;
+if (filename) {
+  // TODO loads svg from url directy. Is this secure enough?
+  const file = await fetch(filename);
+  innerHTML = await file.text();
+  if (innerHTML.length > 10000) {
+    innerHTML = "<div style='color:red'>SVG zu groß (>10000 Zeichen)</div>";
+  }
+} else {
+  innerHTML = (await import(`../svg/${icon}.svg?raw`)).default;
+}
+---
+
+<Fragment {...attributes} set:html={innerHTML} />

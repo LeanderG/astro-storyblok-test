@@ -19,6 +19,7 @@ export default defineConfig({
         header: "storyblok/Header",
         hero_stage: "storyblok/HeroStage",
         footer: "storyblok/Footer",
+        icon_link: "storyblok/IconLink",
       },
     }),
     tailwind(),

@@ -1,6 +1,6 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import ComdirectLogo from "../components/ComdirectLogo.astro";
+import Icon from "../components/Icon.astro";
 import { HeaderStoryblok } from "../generated/component-types-sb";
 
 interface Props {
@@ -48,10 +48,10 @@ function getNavigationItems(segmentId: number) {
 </style>
 
 <header class="bg-petrol" {...storyblokEditable(blok)}>
-  <div class="mx-72">
+  <div class="container mx-auto max-w-screen-lg">
     <div class="relative bg-gelb w-36 py-5">
       <a href="/" class="logo">
-        <ComdirectLogo />
+        <Icon filename={blok.logo.filename} />
       </a>
     </div>
     <nav>

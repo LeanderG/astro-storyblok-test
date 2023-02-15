@@ -1,19 +1,19 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import { CTAStoryblok } from "../generated/component-types-sb";
-
+import Icon from "../components/Icon.astro";
+import { IconLinkStoryblok } from "../generated/component-types-sb";
 interface Props {
-  blok: CTAStoryblok;
+  blok: IconLinkStoryblok;
 }
 const { blok } = Astro.props;
+console.log({ icon: blok.icon.filename });
 ---
 
 <a
   {...storyblokEditable(blok)}
-  class="bg-gelb hover:bg-orange text-black py-3 px-5 rounded-full block mt-8 w-fit mx-auto focus:shadow-fokus focus:outline-black focus:outline-2 focus:outline"
   href={blok.link.cached_url}
   target={blok.link.target}
   rel={blok.link.target ? "noopener noreferrer" : undefined}
 >
-  {blok.text}
+  <Icon filename={blok.icon.filename} />
 </a>

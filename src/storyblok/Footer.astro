@@ -1,14 +1,14 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import ComdirectLogoFooter from "../components/ComdirectLogoFooter.astro";
+import Icon from "../components/Icon.astro";
 import { FooterStoryblok } from "../generated/component-types-sb";
+import IconLink from "./IconLink.astro";
 
 interface Props {
   blok: FooterStoryblok;
 }
 
 const { blok } = Astro.props;
-console.log({ blok });
 ---
 
 <footer class="bg-petrol pt-16 pb-6" {...storyblokEditable(blok)}>
@@ -16,7 +16,7 @@ console.log({ blok });
     <div
       class="flex flex-col lg:flex-row justify-between gap-8 lg:gap-6 text-sm"
     >
-      <div><ComdirectLogoFooter /></div>
+      <div><a href="/"><Icon filename={blok.logo.filename} /></a></div>
       <div class="flex lg:flex-col flex-row gap-3 lg:gap-1 flex-wrap">
         {
           blok.first_list.map((link) => (
@@ -54,6 +54,17 @@ console.log({ blok });
         }
       </div>
     </div>
-    <div class="text-gray-400 text-sm my-6">{blok.copyright}</div>
+    <div class="flex flex-col lg:flex-row items-center lg:gap-24 mt-3">
+      <div class="text-gray-400 text-xs my-6">{blok.copyright}</div>
+      <div class="text-white flex items-center gap-8">
+        {
+          blok.socials.map((social) => (
+            <div class="h-6 w-6 fill-white hover:fill-orange">
+              <IconLink blok={social} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </footer>
