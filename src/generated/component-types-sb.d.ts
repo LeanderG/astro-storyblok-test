@@ -57,12 +57,12 @@ export interface FeatureStoryblok {
 }
 
 export interface FooterStoryblok {
+  logo?: AssetStoryblok;
   first_list?: LinkWrapperStoryblok[];
   second_list?: LinkWrapperStoryblok[];
   third_list?: LinkWrapperStoryblok[];
   copyright?: string;
   socials?: IconLinkStoryblok[];
-  logo?: AssetStoryblok;
   _uid: string;
   component: "Footer";
   [k: string]: any;
@@ -140,6 +140,28 @@ export interface ProductStoryblok {
   global?: StoryblokStory<GlobalStoryblok> | string;
   _uid: string;
   component: "Product";
+  [k: string]: any;
+}
+
+export interface ShapeStoryblok {
+  svg: AssetStoryblok;
+  x: number;
+  y: number;
+  _uid: string;
+  component: "shape";
+  [k: string]: any;
+}
+
+export interface ShapeContainerStoryblok {
+  shapes?: ShapeStoryblok[];
+  _uid: string;
+  component: "shape_container";
+  [k: string]: any;
+}
+
+export interface StocksStoryblok {
+  _uid: string;
+  component: "stocks";
   [k: string]: any;
 }
 

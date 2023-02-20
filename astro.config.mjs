@@ -24,6 +24,8 @@ export default defineConfig({
         footer: "storyblok/Footer",
         icon_link: "storyblok/IconLink",
         stocks: "storyblok/Stocks",
+        shape_container: "storyblok/ShapeContainer",
+        shape: "storyblok/Shape",
       },
     }),
     tailwind(),

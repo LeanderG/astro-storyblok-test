@@ -1,0 +1,18 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import Icon from "../components/Icon.astro";
+import { ShapeStoryblok } from "../generated/component-types-sb";
+
+interface Props {
+  blok: ShapeStoryblok;
+}
+const { blok } = Astro.props;
+---
+
+<div
+  {...storyblokEditable(blok)}
+  class="relative"
+  style={`grid-column-start: col ${blok.x}; grid-row-start: ${blok.y};`}
+>
+  <Icon filename={blok.svg.filename} />
+</div>

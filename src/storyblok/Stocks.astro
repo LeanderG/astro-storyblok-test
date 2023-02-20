@@ -1,9 +1,13 @@
 ---
 import { Highchart2 } from "../components/charts/HighChart2";
 import { Highchart3 } from "../components/charts/HighChart3";
+
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
 ---
 
-<section class="container max-w-screen-xl">
+<section {...storyblokEditable(blok)} class="container max-w-screen-xl">
   <h2 class="text-xl">Highcharts</h2>
   <div class="flex gap-8">
     <Highchart2 client:idle />

@@ -1,0 +1,47 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { ShapeContainerStoryblok } from "../generated/component-types-sb";
+
+interface Props {
+  blok: ShapeContainerStoryblok;
+}
+const { blok } = Astro.props;
+---
+
+<style>
+  .shape-container {
+    width: unset;
+    display: grid;
+    grid-template-columns: repeat(4, [col] 120px) [spacer] 1200px repeat(
+        4,
+        [col] 120px
+      );
+    grid-template-rows: repeat(6, [row] 120px);
+  }
+
+  .container-outer {
+    padding-top: 120px;
+    margin-top: -120px;
+    padding-bottom: 720px;
+    margin-bottom: -720px;
+  }
+</style>
+<div
+  {...storyblokEditable(blok)}
+  class="relative hidden lg:block pointer-events-none"
+>
+  <div
+    class="absolute left-0 right-0 overflow-hidden lg:w-[100vw] container-outer"
+  >
+    <div
+      class="absolute left-1/2 -translate-x-1/2 shape-container h-[720px] lg:w-[100vw]"
+    >
+      {
+        blok.shapes?.map((blok) => {
+          return <StoryblokComponent blok={blok} />;
+        })
+      }
+    </div>
+  </div>
+</div>

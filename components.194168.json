@@ -98,9 +98,17 @@
       "name": "Footer",
       "display_name": null,
       "created_at": "2023-02-12T19:52:58.253Z",
-      "updated_at": "2023-02-15T16:10:07.734Z",
+      "updated_at": "2023-02-15T16:49:19.813Z",
       "id": 3430569,
       "schema": {
+        "logo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": 212486,
+          "pos": 0
+        },
         "first_list": {
           "type": "bloks",
           "restrict_type": "",
@@ -138,14 +146,8 @@
           "restrict_components": true,
           "component_whitelist": [
             "icon_link"
-          ]
-        },
-        "logo": {
-          "type": "asset",
-          "filetypes": [
-            "images"
           ],
-          "asset_folder_id": 212486
+          "pos": 5
         }
       },
       "image": null,
@@ -246,7 +248,7 @@
       "name": "hero_stage",
       "display_name": null,
       "created_at": "2023-02-07T09:53:40.259Z",
-      "updated_at": "2023-02-07T10:13:03.542Z",
+      "updated_at": "2023-02-17T13:44:36.426Z",
       "id": 3404155,
       "schema": {
         "richtext": {
@@ -274,8 +276,8 @@
       "preset_id": null,
       "real_name": "hero_stage",
       "component_group_uuid": null,
-      "color": null,
-      "icon": null
+      "color": "",
+      "icon": ""
     },
     {
       "name": "icon_link",
@@ -457,6 +459,97 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Product",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "shape",
+      "display_name": null,
+      "created_at": "2023-02-20T14:06:19.815Z",
+      "updated_at": "2023-02-20T14:20:19.791Z",
+      "id": 3463279,
+      "schema": {
+        "svg": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": 213405,
+          "required": true
+        },
+        "x": {
+          "type": "number",
+          "decimals": 0,
+          "min_value": 1,
+          "max_value": 10,
+          "default_value": "4",
+          "required": true
+        },
+        "y": {
+          "type": "number",
+          "min_value": 1,
+          "max_value": 5,
+          "default_value": "1",
+          "decimals": 0,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "shape",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "shape_container",
+      "display_name": null,
+      "created_at": "2023-02-20T14:05:14.034Z",
+      "updated_at": "2023-02-20T14:20:02.317Z",
+      "id": 3463242,
+      "schema": {
+        "shapes": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "shape"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "shape_container",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "stocks",
+      "display_name": null,
+      "created_at": "2023-02-16T17:20:46.505Z",
+      "updated_at": "2023-02-16T17:20:46.505Z",
+      "id": 3449764,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "stocks",
       "component_group_uuid": null,
       "color": null,
       "icon": null
