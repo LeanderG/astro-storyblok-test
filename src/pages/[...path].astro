@@ -1,5 +1,5 @@
 ---
-import { ISbResult, ISbStoryData, useStoryblokApi } from "@storyblok/astro";
+import { ISbStoryData, useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import {
   FooterStoryblok,
@@ -7,7 +7,6 @@ import {
   PageStoryblok,
 } from "../generated/component-types-sb";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Page from "../storyblok/Page.astro";
 
 export async function getStaticPaths() {
   const storyblokApi = useStoryblokApi();

@@ -59,8 +59,8 @@ const { blok } = Astro.props;
       <div class="text-white flex items-center gap-8">
         {
           blok.socials.map((social) => (
-            <div class="h-6 w-6 fill-white hover:fill-orange">
-              <IconLink blok={social} />
+            <div class="h-6 w-6 ">
+              <IconLink classes="fill-white hover:fill-orange" blok={social} />
             </div>
           ))
         }

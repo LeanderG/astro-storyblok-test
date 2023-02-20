@@ -5,6 +5,9 @@ import basicSsl from "@vitejs/plugin-basic-ssl";
 import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
+import solidJs from "@astrojs/solid-js";
+
+// https://astro.build/config
 export default defineConfig({
   integrations: [
     storyblok({
@@ -20,9 +23,11 @@ export default defineConfig({
         hero_stage: "storyblok/HeroStage",
         footer: "storyblok/Footer",
         icon_link: "storyblok/IconLink",
+        stocks: "storyblok/Stocks",
       },
     }),
     tailwind(),
+    solidJs(),
   ],
   vite: {
     plugins: [basicSsl()],

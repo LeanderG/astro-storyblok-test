@@ -45,6 +45,31 @@ function getNavigationItems(segmentId: number) {
     height: 100%;
     background: #fff500;
   }
+
+  .second-row::before {
+    position: absolute;
+    content: "";
+    height: 1px;
+    width: calc(100% - 1rem);
+    margin: -1px 0.5rem;
+    background: #b7bbbd;
+  }
+
+  @media screen(lg) {
+    .active-arrow::after {
+      content: "";
+      left: 50%;
+      position: absolute;
+      margin-top: 0;
+      width: 0;
+      height: 0;
+      transform: translate(-50%, -25%) rotate(1turn);
+      border-style: solid;
+      border-width: 0 8px 6px;
+      border-color: transparent transparent #b7bbbd;
+      bottom: -1px;
+    }
+  }
 </style>
 
 <header class="bg-petrol" {...storyblokEditable(blok)}>
@@ -55,43 +80,53 @@ function getNavigationItems(segmentId: number) {
       </a>
     </div>
     <nav>
-      <ul class="flex gap-10 mt-2 py-2">
+      <ul class="flex flex-col lg:flex-row lg:gap-x-2 mt-2 flex-wrap">
         {
           listItems.map((item) => (
-            <li>
-              <a
-                class={
-                  (item.isActive
-                    ? "text-gelb"
-                    : "text-white focus:text-gruen") +
-                  " hover:text-gelb font-medium"
-                }
-                href={item.href}
-                target={item.target}
-              >
-                {item.text}
-              </a>
-              {item.isActive && item.subnav.length > 0 && (
-                <ul>
-                  {item.subnav.map((subnavItem) => (
-                    <li>
-                      <a
-                        class={
-                          subnavItem.isActive
-                            ? "text-gelb"
-                            : "text-white focus:text-gruen" +
-                              " hover:text-gelb font-medium"
-                        }
-                        href={subnavItem.href}
-                        target={subnavItem.target}
-                      >
-                        {subnavItem.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
+            <>
+              <li class={item.isActive ? "active-arrow relative" : "relative"}>
+                <a
+                  class={
+                    (item.isActive
+                      ? "text-gelb"
+                      : "text-white focus:text-gruen") +
+                    "  hover:text-gelb font-bold inline-block p-2"
+                  }
+                  href={item.href}
+                  target={item.target}
+                >
+                  {item.text}
+                </a>
+              </li>
+              {
+                <li
+                  class={
+                    item.isActive && item.subnav.length > 0
+                      ? "order-1 w-full relative"
+                      : "hidden"
+                  }
+                >
+                  <ul class="flex flex-row gap-4 second-row">
+                    {item.subnav.map((subnavItem) => (
+                      <li>
+                        <a
+                          class={
+                            (subnavItem.isActive
+                              ? "text-gelb"
+                              : "text-white focus:text-gruen") +
+                            " hover:text-gelb font-medium inline-block p-2"
+                          }
+                          href={subnavItem.href}
+                          target={subnavItem.target}
+                        >
+                          {subnavItem.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              }
+            </>
           ))
         }
       </ul>

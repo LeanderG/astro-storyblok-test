@@ -1,6 +1,7 @@
 ---
-import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import Image from "../components/Image.astro";
 import Richtext from "../components/Richtext.astro";
 import { HeroStageStoryblok } from "../generated/component-types-sb";
 interface Props {
@@ -11,13 +12,18 @@ const { blok } = Astro.props;
 ---
 
 <section class="bg-petrol relative" {...storyblokEditable(blok)}>
-  <div class="h-[800px]">
-    <img
-      src={blok.foto.filename}
-      alt=""
-      class="h-full object-cover w-full absolute brightness-50"
-    />
-    <div class="z-0 container py-24 h-full absolute">
+  <div class="min-h-[300px] max-w-screen-xl mx-auto">
+    <div class="inset-0 absolute brightness-50 overflow-hidden">
+      <Image
+        src={blok.foto.filename}
+        layout="fullWidth"
+        alt=""
+        priority
+        background="auto"
+        class="w-full h-full"
+      />
+    </div>
+    <div class="z-0 container py-24 h-full relative">
       <Richtext richtext={blok.richtext} />
       <div>
         {

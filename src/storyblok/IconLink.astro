@@ -4,13 +4,14 @@ import Icon from "../components/Icon.astro";
 import { IconLinkStoryblok } from "../generated/component-types-sb";
 interface Props {
   blok: IconLinkStoryblok;
+  classes: string;
 }
-const { blok } = Astro.props;
-console.log({ icon: blok.icon.filename });
+const { blok, classes } = Astro.props;
 ---
 
 <a
   {...storyblokEditable(blok)}
+  class={classes}
   href={blok.link.cached_url}
   target={blok.link.target}
   rel={blok.link.target ? "noopener noreferrer" : undefined}

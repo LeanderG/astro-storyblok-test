@@ -11,8 +11,13 @@ const renderedRichText = renderRichText(richtext);
 
 <style is:global>
   .richtext h1 {
-    font-size: 4rem;
+    font-size: theme(fontSize.4xl);
     line-height: 1;
+  }
+  @media screen(lg) {
+    .richtext h1 {
+      font-size: theme(fontSize.8xl);
+    }
   }
   .richtext h2 {
     font-size: 2rem;

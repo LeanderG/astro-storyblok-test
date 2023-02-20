@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}"],
   theme: {
@@ -16,6 +18,9 @@ module.exports = {
       },
       boxShadow: {
         fokus: "0 0 10px rgba(0, 0, 0, 0.8)",
+      },
+      fontFamily: {
+        sans: ["Mark", ...defaultTheme.fontFamily.sans],
       },
     },
   },
