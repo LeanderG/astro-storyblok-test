@@ -15,6 +15,8 @@ module.exports = {
         orange: "#ffe100",
         petrol: "#0b1e25",
         gruen: "#097c24",
+        "grau-2": "#eee",
+        "grau-3": "#ddd",
       },
       boxShadow: {
         fokus: "0 0 10px rgba(0, 0, 0, 0.8)",

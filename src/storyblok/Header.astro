@@ -1,6 +1,6 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import Icon from "../components/Icon.astro";
+import InlineIcon from "../components/InlineIcon.astro";
 import { HeaderStoryblok } from "../generated/component-types-sb";
 
 interface Props {
@@ -76,7 +76,7 @@ function getNavigationItems(segmentId: number) {
   <div class="container mx-auto max-w-screen-lg">
     <div class="relative bg-gelb w-36 py-5">
       <a href="/" class="logo">
-        <Icon filename={blok.logo.filename} />
+        <InlineIcon filename={blok.logo.filename} />
       </a>
     </div>
     <nav>

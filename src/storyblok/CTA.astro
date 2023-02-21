@@ -6,11 +6,18 @@ interface Props {
   blok: CTAStoryblok;
 }
 const { blok } = Astro.props;
+const typ = blok.typ;
+
+const primaryClasses = "bg-gelb hover:bg-orange text-black";
+const secondaryClasses = "bg-grau-2 hover:bg-grau-3 text-black";
+
+const classes = typ === "primary" ? primaryClasses : secondaryClasses;
 ---
 
 <a
   {...storyblokEditable(blok)}
-  class="bg-gelb hover:bg-orange text-black py-3 px-5 rounded-full block mt-8 w-fit mx-auto focus:shadow-fokus focus:outline-black focus:outline-2 focus:outline"
+  class={classes +
+    "py-3 px-5 rounded-full block mt-8 w-fit mx-auto focus:shadow-fokus focus:outline-black focus:outline-2 focus:outline"}
   href={blok.link.cached_url}
   target={blok.link.target}
   rel={blok.link.target ? "noopener noreferrer" : undefined}

@@ -1,6 +1,6 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import Icon from "../components/Icon.astro";
+import InlineIcon from "../components/InlineIcon.astro";
 import { IconLinkStoryblok } from "../generated/component-types-sb";
 interface Props {
   blok: IconLinkStoryblok;
@@ -16,5 +16,5 @@ const { blok, classes } = Astro.props;
   target={blok.link.target}
   rel={blok.link.target ? "noopener noreferrer" : undefined}
 >
-  <Icon filename={blok.icon.filename} />
+  <InlineIcon filename={blok.icon.filename} />
 </a>
