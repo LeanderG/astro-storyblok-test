@@ -6,8 +6,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "pull-sb-json": "storyblok pull-components --space=194168",
-    "generate-sb-types": "storyblok-generate-ts source=./components.194168.json target=./src/generated/component-types-sb"
+    "pull-sb-json": "storyblok pull-components --space=199778",
+    "generate-sb-types": "storyblok-generate-ts source=./components.199778.json target=./src/generated/component-types-sb"
   },
   "dependencies": {
     "@astrojs/solid-js": "^2.0.2",

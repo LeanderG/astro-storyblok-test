@@ -35,16 +35,18 @@ path = path == undefined ? "home" : path;
 
 const storyblokApi = useStoryblokApi();
 
+const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
+
 const headerPromise = storyblokApi.get(`cdn/stories/header`, {
-  version: import.meta.env.PUBLIC_STORYBLOK_API_VERSION,
+  version: apiVersion,
 });
 
 const pagePromise = storyblokApi.get(`cdn/stories/${path}`, {
-  version: import.meta.env.PUBLIC_STORYBLOK_API_VERSION,
+  version: apiVersion,
 });
 
 const footerPromise = storyblokApi.get(`cdn/stories/footer`, {
-  version: import.meta.env.PUBLIC_STORYBLOK_API_VERSION,
+  version: apiVersion,
 });
 
 const [headerData, pageData, footerData] = await Promise.all([

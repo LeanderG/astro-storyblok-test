@@ -3,37 +3,31 @@
     {
       "name": "CTA",
       "display_name": null,
-      "created_at": "2023-01-30T14:00:19.582Z",
-      "updated_at": "2023-01-30T14:12:00.555Z",
-      "id": 3367792,
+      "created_at": "2023-02-21T22:07:07.336Z",
+      "updated_at": "2023-02-21T22:07:49.726Z",
+      "id": 3470695,
       "schema": {
         "text": {
-          "type": "text",
-          "key": "text",
-          "pos": 0
+          "type": "text"
         },
         "link": {
-          "type": "multilink",
-          "key": "link",
-          "pos": 1
+          "type": "multilink"
         },
         "typ": {
           "type": "option",
+          "use_uuid": true,
           "options": [
             {
-              "_uid": "ec69f96e-910f-4929-957b-3405c89b983d",
+              "_uid": "474262ed-a5c5-41f2-820d-8010e42f4ceb",
               "name": "Primär",
               "value": "primary"
             },
             {
-              "_uid": "8a63febd-c963-4f68-8590-6aa224c7931c",
+              "_uid": "f50d00d9-c8a6-42ea-9525-2c742841507c",
               "value": "secondary",
               "name": "Sekundär"
             }
-          ],
-          "use_uuid": true,
-          "key": "Typ",
-          "pos": 2
+          ]
         }
       },
       "image": null,
@@ -51,34 +45,17 @@
     {
       "name": "feature",
       "display_name": null,
-      "created_at": "2023-01-30T10:42:08.215Z",
-      "updated_at": "2023-01-30T14:47:20.390Z",
-      "id": 3366737,
+      "created_at": "2023-02-21T21:57:49.539Z",
+      "updated_at": "2023-02-21T22:19:41.692Z",
+      "id": 3470582,
       "schema": {
         "name": {
-          "type": "text",
-          "translatable": true,
-          "key": "name",
-          "pos": 0
+          "type": "text"
         },
         "foto": {
-          "type": "asset",
-          "filetypes": [
-            "images"
-          ],
-          "key": "Foto",
-          "pos": 1
+          "type": "asset"
         },
         "CTA": {
-          "type": "bloks",
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": [
-            "CTA"
-          ],
-          "maximum": 1
-        },
-        "test": {
           "type": "bloks"
         }
       },
@@ -95,19 +72,14 @@
       "icon": null
     },
     {
-      "name": "Footer",
+      "name": "footer",
       "display_name": null,
-      "created_at": "2023-02-12T19:52:58.253Z",
-      "updated_at": "2023-02-15T16:49:19.813Z",
-      "id": 3430569,
+      "created_at": "2023-02-21T22:08:06.447Z",
+      "updated_at": "2023-02-21T22:23:44.549Z",
+      "id": 3470696,
       "schema": {
         "logo": {
-          "type": "asset",
-          "filetypes": [
-            "images"
-          ],
-          "asset_folder_id": 212486,
-          "pos": 0
+          "type": "asset"
         },
         "first_list": {
           "type": "bloks",
@@ -115,8 +87,7 @@
           "restrict_components": true,
           "component_whitelist": [
             "link_wrapper"
-          ],
-          "pos": 1
+          ]
         },
         "second_list": {
           "type": "bloks",
@@ -124,8 +95,7 @@
           "restrict_components": true,
           "component_whitelist": [
             "link_wrapper"
-          ],
-          "pos": 2
+          ]
         },
         "third_list": {
           "type": "bloks",
@@ -133,12 +103,10 @@
           "restrict_components": true,
           "component_whitelist": [
             "link_wrapper"
-          ],
-          "pos": 3
+          ]
         },
         "copyright": {
-          "type": "text",
-          "pos": 4
+          "type": "text"
         },
         "socials": {
           "type": "bloks",
@@ -146,8 +114,7 @@
           "restrict_components": true,
           "component_whitelist": [
             "icon_link"
-          ],
-          "pos": 5
+          ]
         }
       },
       "image": null,
@@ -157,26 +124,7 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "Footer",
-      "component_group_uuid": null,
-      "color": null,
-      "icon": null
-    },
-    {
-      "name": "global",
-      "display_name": null,
-      "created_at": "2023-02-01T15:55:00.124Z",
-      "updated_at": "2023-02-01T15:55:00.124Z",
-      "id": 3379655,
-      "schema": {},
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "global",
+      "real_name": "footer",
       "component_group_uuid": null,
       "color": null,
       "icon": null
@@ -184,9 +132,9 @@
     {
       "name": "grid",
       "display_name": null,
-      "created_at": "2023-01-30T10:42:08.189Z",
-      "updated_at": "2023-01-30T10:42:08.189Z",
-      "id": 3366736,
+      "created_at": "2023-02-21T21:57:49.522Z",
+      "updated_at": "2023-02-21T21:57:49.522Z",
+      "id": 3470581,
       "schema": {
         "columns": {
           "type": "bloks"
@@ -207,18 +155,12 @@
     {
       "name": "header",
       "display_name": null,
-      "created_at": "2023-02-06T17:51:36.273Z",
-      "updated_at": "2023-02-15T16:19:25.594Z",
-      "id": 3401635,
+      "created_at": "2023-02-21T22:25:18.981Z",
+      "updated_at": "2023-02-21T22:28:20.626Z",
+      "id": 3470705,
       "schema": {
         "logo": {
-          "type": "asset",
-          "filetypes": [
-            "images"
-          ],
-          "asset_folder_id": 212486,
-          "required": true,
-          "pos": 0
+          "type": "asset"
         },
         "navigation_items": {
           "type": "bloks",
@@ -226,10 +168,7 @@
           "restrict_components": true,
           "component_whitelist": [
             "NavigationLink"
-          ],
-          "component_group_whitelist": [],
-          "key": "navigation_item",
-          "pos": 1
+          ]
         }
       },
       "image": null,
@@ -247,24 +186,19 @@
     {
       "name": "hero_stage",
       "display_name": null,
-      "created_at": "2023-02-07T09:53:40.259Z",
-      "updated_at": "2023-02-17T13:44:36.426Z",
-      "id": 3404155,
+      "created_at": "2023-02-21T22:10:24.531Z",
+      "updated_at": "2023-02-21T22:33:17.526Z",
+      "id": 3470699,
       "schema": {
         "richtext": {
-          "type": "richtext",
-          "key": "richtext",
-          "pos": 0
+          "type": "richtext"
         },
         "foto": {
           "type": "asset",
-          "key": "Foto",
-          "pos": 1
+          "required": true
         },
         "inhalt": {
-          "type": "bloks",
-          "key": "inhalt",
-          "pos": 2
+          "type": "bloks"
         }
       },
       "image": null,
@@ -276,27 +210,29 @@
       "preset_id": null,
       "real_name": "hero_stage",
       "component_group_uuid": null,
-      "color": "",
-      "icon": ""
+      "color": null,
+      "icon": null
     },
     {
       "name": "icon_link",
       "display_name": null,
-      "created_at": "2023-02-15T14:26:50.028Z",
-      "updated_at": "2023-02-15T14:40:57.887Z",
-      "id": 3442903,
+      "created_at": "2023-02-21T22:10:59.771Z",
+      "updated_at": "2023-02-22T12:47:16.175Z",
+      "id": 3470700,
       "schema": {
+        "text": {
+          "type": "text",
+          "pos": 0
+        },
         "icon": {
           "type": "asset",
-          "filetypes": [
-            "images"
-          ],
-          "asset_folder_id": 212486,
-          "pos": 0
+          "pos": 1,
+          "required": true
         },
         "link": {
           "type": "multilink",
-          "pos": 1
+          "pos": 2,
+          "required": true
         }
       },
       "image": null,
@@ -314,17 +250,15 @@
     {
       "name": "link_wrapper",
       "display_name": null,
-      "created_at": "2023-02-12T19:57:28.437Z",
-      "updated_at": "2023-02-12T19:59:23.389Z",
-      "id": 3430572,
+      "created_at": "2023-02-21T22:09:11.299Z",
+      "updated_at": "2023-02-21T22:09:19.586Z",
+      "id": 3470697,
       "schema": {
         "text": {
-          "type": "text",
-          "pos": 0
+          "type": "text"
         },
         "link": {
-          "type": "multilink",
-          "pos": 1
+          "type": "multilink"
         }
       },
       "image": null,
@@ -342,19 +276,15 @@
     {
       "name": "NavigationLink",
       "display_name": null,
-      "created_at": "2023-02-06T17:55:49.757Z",
-      "updated_at": "2023-02-07T07:58:19.949Z",
-      "id": 3401720,
+      "created_at": "2023-02-21T22:27:15.165Z",
+      "updated_at": "2023-02-21T22:27:52.723Z",
+      "id": 3470706,
       "schema": {
         "text": {
-          "type": "text",
-          "pos": 0,
-          "key": "text"
+          "type": "text"
         },
         "link": {
-          "type": "multilink",
-          "pos": 1,
-          "key": "link"
+          "type": "multilink"
         },
         "subnavigation_items": {
           "type": "bloks",
@@ -362,9 +292,7 @@
           "restrict_components": true,
           "component_whitelist": [
             "NavigationLink"
-          ],
-          "key": "navigation_items",
-          "pos": 2
+          ]
         }
       },
       "image": null,
@@ -382,36 +310,12 @@
     {
       "name": "page",
       "display_name": null,
-      "created_at": "2023-01-30T10:42:08.153Z",
-      "updated_at": "2023-02-06T17:42:09.652Z",
-      "id": 3366734,
+      "created_at": "2023-02-21T21:57:49.486Z",
+      "updated_at": "2023-02-21T21:57:49.486Z",
+      "id": 3470579,
       "schema": {
         "body": {
           "type": "bloks"
-        },
-        "test_group": {
-          "type": "section",
-          "keys": [
-            "navigation_mode"
-          ]
-        },
-        "navigation_mode": {
-          "type": "option",
-          "use_uuid": true,
-          "required": true,
-          "options": [
-            {
-              "_uid": "520f1eac-e041-4718-85c3-3369bac8dbd2",
-              "name": "Hell",
-              "value": "light"
-            },
-            {
-              "_uid": "920e15fb-3838-4d49-8c41-de907bbfc9fc",
-              "value": "dark",
-              "name": "Dunkel"
-            }
-          ],
-          "default_value": "dark"
         }
       },
       "image": null,
@@ -427,72 +331,32 @@
       "icon": null
     },
     {
-      "name": "Product",
-      "display_name": null,
-      "created_at": "2023-02-01T15:48:45.518Z",
-      "updated_at": "2023-02-01T16:03:28.542Z",
-      "id": 3379483,
-      "schema": {
-        "Name": {
-          "type": "text",
-          "pos": 0
-        },
-        "Farbe": {
-          "type": "option",
-          "use_uuid": true,
-          "pos": 1
-        },
-        "global": {
-          "type": "option",
-          "use_uuid": true,
-          "source": "internal_stories",
-          "filter_content_type": [
-            "global"
-          ]
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Product",
-      "component_group_uuid": null,
-      "color": null,
-      "icon": null
-    },
-    {
       "name": "shape",
       "display_name": null,
-      "created_at": "2023-02-20T14:06:19.815Z",
-      "updated_at": "2023-02-20T14:20:19.791Z",
-      "id": 3463279,
+      "created_at": "2023-02-21T22:11:41.100Z",
+      "updated_at": "2023-02-21T22:18:08.605Z",
+      "id": 3470701,
       "schema": {
         "svg": {
           "type": "asset",
+          "asset_folder_id": 213746,
           "filetypes": [
             "images"
-          ],
-          "asset_folder_id": 213405,
-          "required": true
+          ]
         },
         "x": {
           "type": "number",
-          "decimals": 0,
           "min_value": 1,
-          "max_value": 10,
-          "default_value": "4",
-          "required": true
+          "max_value": 8,
+          "decimals": 0,
+          "default_value": "4"
         },
         "y": {
           "type": "number",
           "min_value": 1,
-          "max_value": 5,
-          "default_value": "1",
+          "max_value": 6,
           "decimals": 0,
-          "required": true
+          "default_value": "1"
         }
       },
       "image": null,
@@ -510,9 +374,9 @@
     {
       "name": "shape_container",
       "display_name": null,
-      "created_at": "2023-02-20T14:05:14.034Z",
-      "updated_at": "2023-02-20T14:20:02.317Z",
-      "id": 3463242,
+      "created_at": "2023-02-21T22:12:15.840Z",
+      "updated_at": "2023-02-21T22:12:30.615Z",
+      "id": 3470702,
       "schema": {
         "shapes": {
           "type": "bloks",
@@ -538,9 +402,9 @@
     {
       "name": "stocks",
       "display_name": null,
-      "created_at": "2023-02-16T17:20:46.505Z",
-      "updated_at": "2023-02-16T17:20:46.505Z",
-      "id": 3449764,
+      "created_at": "2023-02-21T22:12:41.872Z",
+      "updated_at": "2023-02-21T22:12:41.872Z",
+      "id": 3470703,
       "schema": {},
       "image": null,
       "preview_field": null,
@@ -557,16 +421,11 @@
     {
       "name": "teaser",
       "display_name": null,
-      "created_at": "2023-01-30T10:42:08.171Z",
-      "updated_at": "2023-02-07T13:22:57.229Z",
-      "id": 3366735,
+      "created_at": "2023-02-21T21:57:49.505Z",
+      "updated_at": "2023-02-21T21:57:49.505Z",
+      "id": 3470580,
       "schema": {
         "headline": {
-          "type": "text",
-          "key": "headline",
-          "pos": 0
-        },
-        "subline": {
           "type": "text"
         }
       },

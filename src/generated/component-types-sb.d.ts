@@ -49,8 +49,7 @@ export interface AssetStoryblok {
 export interface FeatureStoryblok {
   name?: string;
   foto?: AssetStoryblok;
-  CTA?: CtaStoryblok[];
-  test?: any[];
+  CTA?: any[];
   _uid: string;
   component: "feature";
   [k: string]: any;
@@ -64,14 +63,7 @@ export interface FooterStoryblok {
   copyright?: string;
   socials?: IconLinkStoryblok[];
   _uid: string;
-  component: "Footer";
-  [k: string]: any;
-}
-
-export interface GlobalStoryblok {
-  _uid: string;
-  component: "global";
-  uuid?: string;
+  component: "footer";
   [k: string]: any;
 }
 
@@ -83,7 +75,7 @@ export interface GridStoryblok {
 }
 
 export interface HeaderStoryblok {
-  logo: AssetStoryblok;
+  logo?: AssetStoryblok;
   navigation_items?: NavigationLinkStoryblok[];
   _uid: string;
   component: "header";
@@ -92,7 +84,7 @@ export interface HeaderStoryblok {
 
 export interface HeroStageStoryblok {
   richtext?: any;
-  foto?: AssetStoryblok;
+  foto: AssetStoryblok;
   inhalt?: any[];
   _uid: string;
   component: "hero_stage";
@@ -100,8 +92,9 @@ export interface HeroStageStoryblok {
 }
 
 export interface IconLinkStoryblok {
-  icon?: AssetStoryblok;
-  link?: MultilinkStoryblok;
+  text?: string;
+  icon: AssetStoryblok;
+  link: MultilinkStoryblok;
   _uid: string;
   component: "icon_link";
   [k: string]: any;
@@ -126,27 +119,16 @@ export interface NavigationLinkStoryblok {
 
 export interface PageStoryblok {
   body?: any[];
-  test_group?: any;
-  navigation_mode: "" | "light" | "dark";
   _uid: string;
   component: "page";
   uuid?: string;
   [k: string]: any;
 }
 
-export interface ProductStoryblok {
-  Name?: string;
-  Farbe?: any;
-  global?: StoryblokStory<GlobalStoryblok> | string;
-  _uid: string;
-  component: "Product";
-  [k: string]: any;
-}
-
 export interface ShapeStoryblok {
-  svg: AssetStoryblok;
-  x: number;
-  y: number;
+  svg?: AssetStoryblok;
+  x?: number;
+  y?: number;
   _uid: string;
   component: "shape";
   [k: string]: any;
@@ -167,7 +149,6 @@ export interface StocksStoryblok {
 
 export interface TeaserStoryblok {
   headline?: string;
-  subline?: string;
   _uid: string;
   component: "teaser";
   [k: string]: any;

@@ -17,4 +17,5 @@ const { blok, classes } = Astro.props;
   rel={blok.link.target ? "noopener noreferrer" : undefined}
 >
   <InlineIcon filename={blok.icon.filename} />
+  <span class="sr-only">{blok.text}</span>
 </a>
