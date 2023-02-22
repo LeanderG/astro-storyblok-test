@@ -3,9 +3,10 @@ import { renderRichText } from "@storyblok/astro";
 
 interface Props {
   richtext: any;
+  theme: "light" | "dark";
 }
 
-const { richtext } = Astro.props;
+const { richtext, theme } = Astro.props;
 const renderedRichText = renderRichText(richtext);
 ---
 
@@ -23,4 +24,7 @@ const renderedRichText = renderRichText(richtext);
     font-size: 2rem;
   }
 </style>
-<div class="richtext text-white" set:html={renderedRichText} />
+<div
+  class={"richtext " + (theme === "dark" ? "text-white" : "text-black")}
+  set:html={renderedRichText}
+/>

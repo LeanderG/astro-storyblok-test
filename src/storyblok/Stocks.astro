@@ -8,9 +8,12 @@ const { blok } = Astro.props;
 ---
 
 <section {...storyblokEditable(blok)} class="container max-w-screen-xl">
-  <h2 class="text-xl">Highcharts</h2>
   <div class="flex flex-col lg:flex-row gap-8">
-    <Highchart2 client:load />
-    <Highchart3 client:load />
+    <div class="lg:w-1/2">
+      <Highchart2 client:idle />
+    </div>
+    <div class="lg:w-1/2">
+      <Highchart3 client:idle />
+    </div>
   </div>
 </section>

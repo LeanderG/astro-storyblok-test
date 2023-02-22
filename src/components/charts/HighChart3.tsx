@@ -37,7 +37,5 @@ export function Highchart3() {
       }
     );
   });
-  return (
-    <div id="container-highchart-3" style="width: 500px; height: 700px;"></div>
-  );
+  return <div id="container-highchart-3"></div>;
 }

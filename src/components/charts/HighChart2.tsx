@@ -80,9 +80,5 @@ export function Highchart2() {
       }
     );
   });
-  return (
-    <div>
-      <div id="container-highchart-2"></div>
-    </div>
-  );
+  return <div id="container-highchart-2"></div>;
 }
