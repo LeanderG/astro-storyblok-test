@@ -11,76 +11,73 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 export async function getStaticPaths() {
   const storyblokApi = useStoryblokApi();
 
+  const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
   const { data } = await storyblokApi.get("cdn/links", {
-    version: "draft",
+    version: apiVersion,
+    starts_with: "pages/",
   });
 
   let links = data.links;
   links = Object.values(links);
-
-  const paths = links.map((link) => {
-    return {
-      params: { path: link.slug },
-    };
-  });
-
-  paths.push({ params: { path: undefined } });
+  const paths = links
+    .filter((link) => {
+      return !link.is_folder;
+    })
+    .map((link) => {
+      const real_path = link.real_path;
+      const result = {
+        params: {
+          path:
+            real_path === "/"
+              ? undefined // Astro needs undefined instead of '/' for the root path
+              : real_path.substring(1, real_path.length), // Astro doesn't allow a leading slash
+        },
+        props: { story: link.slug, uuid: link.uuid },
+      };
+      return result;
+    });
 
   return paths;
 }
-
 let { path } = Astro.params;
+let { story, uuid } = Astro.props;
 
-path = path == undefined ? "home" : path;
+console.log({ path, story });
 
 const storyblokApi = useStoryblokApi();
 
 const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
 
-const headerPromise = storyblokApi
-  .get(`cdn/stories/header`, {
+const { data } = await storyblokApi
+  .get(`cdn/stories`, {
+    by_uuids_ordered:
+      "44774b71-e375-4d91-be19-46d30588bb1d,82edee64-5bb4-4cf9-b0c5-8a324b9fa130," + // first uuid is the header, second the footer, last the page
+      uuid,
     version: apiVersion,
   })
   .catch((error) => {
-    throw new Error(`Error getting header data for path '${path}'`, {
-      cause: error,
-    });
+    throw new Error(
+      `Error getting data for path '${path}' and story '${story}'`,
+      {
+        cause: error,
+      }
+    );
   });
 
-const pagePromise = storyblokApi
-  .get(`cdn/stories/${path}`, {
-    version: apiVersion,
-  })
-  .catch((error) => {
-    throw new Error(`Error getting page data for path '${path}'`, {
-      cause: error,
-    });
-  });
+if (data.stories.length !== 3) {
+  throw new Error(
+    `Expected to get 3 Stories from API for path '${path}': Header, Footer and Page. Only ${data.stories.length} Stories were returned.`
+  );
+}
 
-const footerPromise = storyblokApi
-  .get(`cdn/stories/footer`, {
-    version: apiVersion,
-  })
-  .catch((error) => {
-    throw new Error(`Error getting footer data for path '${path}'`, {
-      cause: error,
-    });
-  });
-
-const [headerData, pageData, footerData] = await Promise.all([
-  headerPromise,
-  pagePromise,
-  footerPromise,
-]);
-
-const header: ISbStoryData<HeaderStoryblok> = headerData.data.story;
-const story: ISbStoryData<PageStoryblok> = pageData.data.story;
-const footer: ISbStoryData<FooterStoryblok> = footerData.data.story;
+const header: ISbStoryData<HeaderStoryblok> = data.stories[0];
+const footer: ISbStoryData<FooterStoryblok> = data.stories[1];
+const page: ISbStoryData<PageStoryblok> = data.stories[2];
 ---
 
-<BaseLayout>
+<BaseLayout seo={page?.content.seo}>
   <StoryblokComponent
-    blok={story.content}
+    blok={page.content}
     headerBlok={header.content}
     footerBlok={footer.content}
     path={path}

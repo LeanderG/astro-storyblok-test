@@ -10,7 +10,7 @@ interface Props {
 
 const { blok, path } = Astro.props;
 
-const segments = path.match(/[^\/]+/g);
+const segments = path === undefined ? [] : path.match(/[^\/]+/g);
 
 const listItems = blok.navigation_items.map(getNavigationItems(0));
 

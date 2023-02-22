@@ -311,11 +311,16 @@
       "name": "page",
       "display_name": null,
       "created_at": "2023-02-21T21:57:49.486Z",
-      "updated_at": "2023-02-21T21:57:49.486Z",
+      "updated_at": "2023-02-22T14:56:35.847Z",
       "id": 3470579,
       "schema": {
         "body": {
           "type": "bloks"
+        },
+        "seo": {
+          "type": "custom",
+          "field_type": "seo-metatags",
+          "options": []
         }
       },
       "image": null,
