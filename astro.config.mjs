@@ -3,12 +3,13 @@ import storyblok from "@storyblok/astro";
 import tailwind from "@astrojs/tailwind";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import vercel from "@astrojs/vercel/serverless";
-
-// https://astro.build/config
 import solidJs from "@astrojs/solid-js";
+import sitemap from "@astrojs/sitemap";
+import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://astro-storyblok-test.pages.dev/",
   integrations: [
     storyblok({
       accessToken: import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN,
@@ -30,6 +31,8 @@ export default defineConfig({
     }),
     tailwind(),
     solidJs(),
+    sitemap(),
+    prefetch(),
   ],
   vite: {
     plugins: [basicSsl()],
