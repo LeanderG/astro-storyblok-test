@@ -37,17 +37,35 @@ const storyblokApi = useStoryblokApi();
 
 const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
 
-const headerPromise = storyblokApi.get(`cdn/stories/header`, {
-  version: apiVersion,
-});
+const headerPromise = storyblokApi
+  .get(`cdn/stories/header`, {
+    version: apiVersion,
+  })
+  .catch((error) => {
+    throw new Error(`Error getting header data for path '${path}'`, {
+      cause: error,
+    });
+  });
 
-const pagePromise = storyblokApi.get(`cdn/stories/${path}`, {
-  version: apiVersion,
-});
+const pagePromise = storyblokApi
+  .get(`cdn/stories/${path}`, {
+    version: apiVersion,
+  })
+  .catch((error) => {
+    throw new Error(`Error getting page data for path '${path}'`, {
+      cause: error,
+    });
+  });
 
-const footerPromise = storyblokApi.get(`cdn/stories/footer`, {
-  version: apiVersion,
-});
+const footerPromise = storyblokApi
+  .get(`cdn/stories/footer`, {
+    version: apiVersion,
+  })
+  .catch((error) => {
+    throw new Error(`Error getting footer data for path '${path}'`, {
+      cause: error,
+    });
+  });
 
 const [headerData, pageData, footerData] = await Promise.all([
   headerPromise,
