@@ -9,9 +9,6 @@ export function Highchart2() {
     Highcharts.getJSON(
       "https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/large-dataset.json",
       function (data) {
-        // Create a timer
-        var start = +new Date();
-
         // Create the chart
         Highcharts.stockChart("container-highchart-2", {
           chart: {
