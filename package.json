@@ -14,7 +14,7 @@
     "@astrojs/tailwind": "^3.0.0",
     "@astrojs/vercel": "^3.0.1",
     "@storyblok/astro": "^2.0.3",
-    "@unpic/core": "^0.0.6",
+    "@unpic/astro": "^0.0.2",
     "astro": "^2.0.7",
     "highcharts": "^10.3.3",
     "solid-js": "^1.6.11",
