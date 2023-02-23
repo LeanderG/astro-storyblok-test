@@ -36,7 +36,6 @@ export async function getStaticPaths() {
               ? undefined // Astro needs undefined instead of '/' for the root path
               : stripSlashes(real_path), // Astro doesn't like leading and trailing slashes
         },
-        props: { story: link.slug, uuid: link.uuid },
       };
       return result;
     });
@@ -44,7 +43,8 @@ export async function getStaticPaths() {
   return paths;
 }
 let { path } = Astro.params;
-let { story, uuid } = Astro.props;
+
+path = path === undefined ? "" : path; // Astro needs undefined, Storyblok an empty string
 
 const storyblokApi = useStoryblokApi();
 
@@ -52,29 +52,31 @@ const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
 
 const { data } = await storyblokApi
   .get(`cdn/stories`, {
-    by_uuids_ordered:
-      "44774b71-e375-4d91-be19-46d30588bb1d,82edee64-5bb4-4cf9-b0c5-8a324b9fa130," + // first uuid is the header, second the footer, last the page
-      uuid,
+    // query for the page slug twice because startpages need a trailing slash and regular pages don't...
+    by_slugs: "header,footer," + "pages/" + path + "/," + "pages/" + path,
     version: apiVersion,
   })
   .catch((error) => {
-    throw new Error(
-      `Error getting data for path '${path}' and story '${story}'`,
-      {
-        cause: error,
-      }
-    );
+    throw new Error(`Error getting data for path '${path}'`, {
+      cause: error,
+    });
   });
+
+const header: ISbStoryData<HeaderStoryblok> = data.stories.find(
+  (story) => story.content.component === "header"
+);
+const footer: ISbStoryData<FooterStoryblok> = data.stories.find(
+  (story) => story.content.component === "footer"
+);
+const page: ISbStoryData<PageStoryblok> = data.stories.find(
+  (story) => story.content.component === "page"
+);
 
 if (data.stories.length !== 3) {
   throw new Error(
     `Expected to get 3 Stories from API for path '${path}': Header, Footer and Page. Only ${data.stories.length} Stories were returned.`
   );
 }
-
-const header: ISbStoryData<HeaderStoryblok> = data.stories[0];
-const footer: ISbStoryData<FooterStoryblok> = data.stories[1];
-const page: ISbStoryData<PageStoryblok> = data.stories[2];
 ---
 
 <BaseLayout seo={page?.content.seo}>
