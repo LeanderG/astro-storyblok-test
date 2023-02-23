@@ -85,7 +85,13 @@ function getNavigationItems(segmentId: number) {
         {
           listItems.map((item) => (
             <>
-              <li class={item.isActive ? "active-arrow relative" : "relative"}>
+              <li
+                class={
+                  item.isActive && item.subnav.length > 0
+                    ? "active-arrow relative"
+                    : "relative"
+                }
+              >
                 <a
                   class={
                     (item.isActive

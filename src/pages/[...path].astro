@@ -9,6 +9,10 @@ import {
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
+  function stripSlashes(str) {
+    str = str.startsWith("/") ? str.substring(1, str.length) : str;
+    return str.endsWith("/") ? str.slice(0, -1) : str;
+  }
   const storyblokApi = useStoryblokApi();
 
   const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
@@ -30,7 +34,7 @@ export async function getStaticPaths() {
           path:
             real_path === "/"
               ? undefined // Astro needs undefined instead of '/' for the root path
-              : real_path.substring(1, real_path.length), // Astro doesn't allow a leading slash
+              : stripSlashes(real_path), // Astro doesn't like leading and trailing slashes
         },
         props: { story: link.slug, uuid: link.uuid },
       };
@@ -41,8 +45,6 @@ export async function getStaticPaths() {
 }
 let { path } = Astro.params;
 let { story, uuid } = Astro.props;
-
-console.log({ path, story });
 
 const storyblokApi = useStoryblokApi();
 
