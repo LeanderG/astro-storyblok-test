@@ -13,6 +13,9 @@ export default defineConfig({
   integrations: [
     storyblok({
       accessToken: import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN,
+      apiOptions: {
+        rateLimit: 10,
+      },
       bridge: import.meta.env.VITE_ASTRO_SSR === "true" || import.meta.env.DEV,
       components: {
         page: "storyblok/Page",

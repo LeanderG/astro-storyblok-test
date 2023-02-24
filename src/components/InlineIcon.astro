@@ -1,4 +1,6 @@
 ---
+import { cachingFetch } from "../misc/caching-fetch";
+
 export interface Props {
   // icon name from the src/svg folder
   icon?: string;
@@ -11,9 +13,7 @@ let innerHTML: string;
 if (filename) {
   // TODO loads svg from url directy.
   // Is this secure enough?
-  // Is this fast enough?
-  // Does this need a cache?
-  const file = await fetch(filename);
+  const file = await cachingFetch(filename);
   innerHTML = await file.text();
   if (innerHTML.length > 10000) {
     innerHTML = "<div style='color:red'>SVG zu groß (>10000 Zeichen)</div>";

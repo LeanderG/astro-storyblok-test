@@ -21,3 +21,5 @@ pnpm-debug.log*
 
 # generated storyblok types
 # src/generated/
+
+.cache/
