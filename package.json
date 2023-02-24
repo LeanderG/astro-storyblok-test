@@ -10,6 +10,7 @@
     "generate-sb-types": "storyblok-generate-ts source=./components.199778.json target=./src/generated/component-types-sb"
   },
   "dependencies": {
+    "@11ty/eleventy-fetch": "^3.0.0",
     "@astrojs/prefetch": "^0.1.2",
     "@astrojs/sitemap": "^1.0.1",
     "@astrojs/solid-js": "^2.0.2",

@@ -50,6 +50,7 @@ const storyblokApi = useStoryblokApi();
 
 const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
 
+// load header, footer and page in one request to reduce throttling
 const { data } = await storyblokApi
   .get(`cdn/stories`, {
     // query for the page slug twice because startpages need a trailing slash and regular pages don't...
