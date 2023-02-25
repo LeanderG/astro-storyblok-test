@@ -11,7 +11,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 export async function getStaticPaths() {
   function stripSlashes(str) {
     str = str.startsWith("/") ? str.substring(1, str.length) : str;
-    return str.endsWith("/") ? str.slice(0, -1) : str;
+    return str.endsWith("/") ? str.substring(0, str.length - 1) : str;
   }
   const storyblokApi = useStoryblokApi();
 
@@ -50,6 +50,7 @@ const storyblokApi = useStoryblokApi();
 
 const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
 
+// load header, footer and page in one request to reduce throttling
 const { data } = await storyblokApi
   .get(`cdn/stories`, {
     // query for the page slug twice because startpages need a trailing slash and regular pages don't...
