@@ -117,6 +117,12 @@ export interface NavigationLinkStoryblok {
   [k: string]: any;
 }
 
+export interface NeuiStoryblok {
+  _uid: string;
+  component: "neui";
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
   body?: any[];
   seo?: {
@@ -162,6 +168,8 @@ export interface StocksStoryblok {
 
 export interface TeaserStoryblok {
   headline?: string;
+  Link?: MultilinkStoryblok;
+  richtext?: any;
   _uid: string;
   component: "teaser";
   [k: string]: any;

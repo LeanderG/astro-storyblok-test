@@ -5,7 +5,6 @@ import basicSsl from "@vitejs/plugin-basic-ssl";
 import vercel from "@astrojs/vercel/serverless";
 import solidJs from "@astrojs/solid-js";
 import sitemap from "@astrojs/sitemap";
-import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,12 +29,12 @@ export default defineConfig({
         stocks: "storyblok/Stocks",
         shape_container: "storyblok/ShapeContainer",
         shape: "storyblok/Shape",
+        neui: "storyblok/Neui",
       },
     }),
     tailwind(),
     solidJs(),
     sitemap(),
-    prefetch(),
   ],
   vite: {
     plugins: [basicSsl()],

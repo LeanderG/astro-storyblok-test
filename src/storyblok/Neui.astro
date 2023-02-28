@@ -1,0 +1,9 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+// import { NeuUiTest } from "../components/NeuUiTest";
+const { blok } = Astro.props;
+---
+
+<div {...storyblokEditable(blok)}>
+  <!-- <NeuUiTest client:load /> -->
+</div>
