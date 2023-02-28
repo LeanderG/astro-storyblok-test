@@ -23,6 +23,23 @@ const renderedRichText = renderRichText(richtext);
   .richtext h2 {
     font-size: 2rem;
   }
+
+  .richtext a:hover {
+    color: theme(colors.gruen);
+  }
+
+  .richtext .farbverlauf {
+    background-image: linear-gradient(
+      -225deg,
+      #44107a 0%,
+      #ff1361 33%,
+      #fff800 100%
+    );
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 </style>
 <div
   class={"richtext " + (theme === "dark" ? "text-white" : "text-black")}
