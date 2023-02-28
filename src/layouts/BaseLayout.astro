@@ -1,6 +1,6 @@
 ---
 import { PageStoryblok } from "../generated/component-types-sb";
-
+import { getCssText } from "@neui/core";
 interface Props {
   seo: PageStoryblok["seo"];
 }
@@ -40,7 +40,6 @@ const { seo } = Astro.props;
         <meta property="twitter:title" content={seo.twitter_title} />
       )
     }
-
     <style is:inline>
       @font-face {
         font-family: "Mark";
@@ -66,6 +65,7 @@ const { seo } = Astro.props;
         font-display: swap;
       } */
     </style>
+    <style id="stitches" set:html={getCssText()}></style>
   </head>
 
   <body class="bg-petrol">
