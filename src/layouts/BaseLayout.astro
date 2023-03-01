@@ -3,13 +3,14 @@ import { PageStoryblok } from "../generated/component-types-sb";
 
 interface Props {
   seo: PageStoryblok["seo"];
+  lang: "de" | "en";
 }
 
-const { seo } = Astro.props;
+const { seo, lang } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

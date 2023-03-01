@@ -16,16 +16,16 @@ const listItems = blok.navigation_items.map(getNavigationItems(0));
 
 function getNavigationItems(segmentId: number) {
   return (navigation_item) => {
-    const cached_url = navigation_item.link.cached_url; // internal url
+    const full_slug = navigation_item.link.story.full_slug; // internal url
     const url = navigation_item.link.url; // external url
     const text = navigation_item.text;
     const target = navigation_item.link.target;
 
-    const href = url || "/" + cached_url;
+    const href = url || "/" + full_slug;
 
     const isActive =
       segments?.[segmentId] !== undefined &&
-      segments?.[segmentId] === cached_url.match(/[^\/]+/g)?.[segmentId];
+      segments?.[segmentId] === full_slug.match(/[^\/]+/g)?.[segmentId];
 
     let subnav = navigation_item.subnavigation_items.map(
       getNavigationItems(segmentId + 1)

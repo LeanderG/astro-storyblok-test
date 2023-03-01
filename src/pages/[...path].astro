@@ -18,44 +18,84 @@ export async function getStaticPaths() {
   const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
   const { data } = await storyblokApi.get("cdn/links", {
     version: apiVersion,
-    starts_with: "pages/",
   });
 
   let links = data.links;
   links = Object.values(links);
-  const paths = links
+  const translatedPaths = [];
+  const pathsWithoutFolders = links
     .filter((link) => {
       return !link.is_folder;
     })
-    .map((link) => {
-      const real_path = link.real_path;
-      const result = {
+    .filter((link) => !link.slug.startsWith("pages/"))
+    .filter((link) => !link.slug.startsWith("en/pages/"))
+    .filter((link) => !link.slug.startsWith("config/"));
+
+  pathsWithoutFolders.forEach((link) => {
+    link.alternates.forEach((altPath) => {
+      translatedPaths.push({
         params: {
           path:
-            real_path === "/"
-              ? undefined // Astro needs undefined instead of '/' for the root path
-              : stripSlashes(real_path), // Astro doesn't like leading and trailing slashes
+            altPath.path === "home"
+              ? "en"
+              : stripSlashes("en/" + stripSlashes(altPath.path)),
         },
-      };
-      return result;
+      });
     });
+  });
 
-  return paths;
+  const paths = pathsWithoutFolders.map((link) => {
+    const slug = link.slug;
+    const result = {
+      params: {
+        path:
+          slug === "home"
+            ? undefined // Astro needs undefined instead of '/' for the root path
+            : stripSlashes(slug), // Astro doesn't like leading and trailing slashes
+      },
+    };
+
+    return result;
+  });
+
+  const allPaths = [...paths, ...translatedPaths];
+
+  return allPaths;
 }
 let { path } = Astro.params;
 
-path = path === undefined ? "" : path; // Astro needs undefined, Storyblok an empty string
+path = path === undefined ? "home" : path; // Astro needs undefined, Storyblok an empty string
+
+path = path === "en" ? "en/home" : path; // Astro needs undefined, Storyblok an empty string
+
+let language = "de";
+
+if (path.startsWith("en/")) {
+  path = path.substring(3, path.length);
+  language = "en";
+}
 
 const storyblokApi = useStoryblokApi();
 
 const apiVersion = import.meta.env.PUBLIC_STORYBLOK_API_VERSION;
 
-// load header, footer and page in one request to reduce throttling
 const { data } = await storyblokApi
   .get(`cdn/stories`, {
-    // query for the page slug twice because startpages need a trailing slash and regular pages don't...
-    by_slugs: "header,footer," + "pages/" + path + "/," + "pages/" + path,
+    by_slugs: "config/header,config/footer",
     version: apiVersion,
+    language,
+    resolve_links: "url",
+  })
+  .catch((error) => {
+    throw new Error(`Error getting data for path '${path}'`, {
+      cause: error,
+    });
+  });
+
+const { data: pageData } = await storyblokApi
+  .get(`cdn/stories/${path}/`, {
+    version: apiVersion,
+    language,
   })
   .catch((error) => {
     throw new Error(`Error getting data for path '${path}'`, {
@@ -69,18 +109,16 @@ const header: ISbStoryData<HeaderStoryblok> = data.stories.find(
 const footer: ISbStoryData<FooterStoryblok> = data.stories.find(
   (story) => story.content.component === "footer"
 );
-const page: ISbStoryData<PageStoryblok> = data.stories.find(
-  (story) => story.content.component === "page"
-);
+const page: ISbStoryData<PageStoryblok> = pageData.story;
 
-if (data.stories.length !== 3) {
+if (data.stories.length !== 2) {
   throw new Error(
-    `Expected to get 3 Stories from API for path '${path}': Header, Footer and Page. Only ${data.stories.length} Stories were returned.`
+    `Expected to get 2 Stories from API for path '${path}': Header, Footer. Only ${data.stories.length} Stories were returned.`
   );
 }
 ---
 
-<BaseLayout seo={page?.content.seo}>
+<BaseLayout seo={page?.content.seo} lang={language}>
   <StoryblokComponent
     blok={page.content}
     headerBlok={header.content}
