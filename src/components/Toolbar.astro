@@ -1,3 +1,7 @@
+---
+import InlineIcon from "./InlineIcon.astro";
+---
+
 <style>
   .searchBar {
     color: rgba(255, 255, 255, 0.5);
@@ -14,27 +18,39 @@
   }
 </style>
 
-<div class="flex content-evenly items-center gap-6 align-middle">
+<div class="hidden lg:flex content-evenly items-center gap-6 align-middle">
   <nav>
-    <ul class="flex gap-8 opacity-0 text-white text-sm md:opacity-50">
+    <ul class="flex gap-8 text-grau-4 text-sm">
       <li>Musterdepot</li>
       <li>B2B</li>
     </ul>
   </nav>
-  <input
-    class="searchBar rounded-full px-5 bg-petrol border border-opacity-50 text-sm h-8"
-    type="search"
-    name="WKN"
-    id="WKN"
-    placeholder="WKN, ISIN, Name"
-  />
-  <input
-    class="searchBar rounded-full px-5 bg-petrol border border-opacity-50 text-sm h-8"
-    type="search"
-    name="Volltext"
-    id="Volltext"
-    placeholder="Volltextsuche"
-  />
+  <div class="relative">
+    <input
+      class="searchBar rounded-full px-5 py-2 bg-petrol border border-grau-4 text-sm"
+      type="search"
+      name="WKN"
+      id="WKN"
+      placeholder="WKN, ISIN, Name"
+    />
+    <div class="absolute right-3 h-full top-0 w-4 flex text-grau-4">
+      <InlineIcon icon="search-icon" />
+    </div>
+  </div>
+
+  <div class="relative">
+    <input
+      class="searchBar rounded-full px-5 py-2 bg-petrol border border-grau-4 text-sm"
+      type="search"
+      name="Volltext"
+      id="Volltext"
+      placeholder="Volltextsuche"
+    />
+    <div class="absolute right-3 h-full top-0 w-4 flex text-grau-4">
+      <InlineIcon icon="search-icon" />
+    </div>
+  </div>
+
   <button
     class="button-primary rounded-3xl px-6 py-1 ease-out duration-200 font-semibold"
     >Login</button
