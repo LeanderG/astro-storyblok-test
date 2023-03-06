@@ -13,7 +13,7 @@ export default defineConfig({
     storyblok({
       accessToken: import.meta.env.VITE_STORYBLOK_PREVIEW_TOKEN,
       apiOptions: {
-        rateLimit: 10,
+        rateLimit: 15,
       },
       bridge: import.meta.env.VITE_ASTRO_SSR === "true" || import.meta.env.DEV,
       components: {

@@ -27,12 +27,10 @@ export async function getStaticPaths() {
     .filter((link) => {
       return !link.is_folder;
     })
-    .filter((link) => !link.slug.startsWith("pages/"))
-    .filter((link) => !link.slug.startsWith("en/pages/"))
     .filter((link) => !link.slug.startsWith("config/"));
 
   pathsWithoutFolders.forEach((link) => {
-    link.alternates.forEach((altPath) => {
+    link?.alternates?.forEach((altPath) => {
       translatedPaths.push({
         params: {
           path:
@@ -68,7 +66,7 @@ path = path === undefined ? "home" : path; // Astro needs undefined, Storyblok a
 
 path = path === "en" ? "en/home" : path; // Astro needs undefined, Storyblok an empty string
 
-let language = "de";
+let language: "de" | "en" = "de";
 
 if (path.startsWith("en/")) {
   path = path.substring(3, path.length);
