@@ -1,0 +1,42 @@
+<style>
+  .searchBar {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .button-primary {
+    background-color: #fff500;
+    color: #0b1e25;
+    border: #0b1e25;
+    cursor: pointer;
+    min-height: 2.25rem;
+  }
+  .button-primary:hover {
+    background-color: #ffd200;
+  }
+</style>
+
+<div class="flex content-evenly items-center gap-6 align-middle">
+  <nav>
+    <ul class="flex gap-8 opacity-0 text-white text-sm md:opacity-50">
+      <li>Musterdepot</li>
+      <li>B2B</li>
+    </ul>
+  </nav>
+  <input
+    class="searchBar rounded-full px-5 bg-petrol border border-opacity-50 text-sm h-8"
+    type="search"
+    name="WKN"
+    id="WKN"
+    placeholder="WKN, ISIN, Name"
+  />
+  <input
+    class="searchBar rounded-full px-5 bg-petrol border border-opacity-50 text-sm h-8"
+    type="search"
+    name="Volltext"
+    id="Volltext"
+    placeholder="Volltextsuche"
+  />
+  <button
+    class="button-primary rounded-3xl px-6 py-1 ease-out duration-200 font-semibold"
+    >Login</button
+  >
+</div>

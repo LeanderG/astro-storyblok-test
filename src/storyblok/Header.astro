@@ -2,7 +2,7 @@
 import { storyblokEditable } from "@storyblok/astro";
 import InlineIcon from "../components/InlineIcon.astro";
 import { HeaderStoryblok } from "../generated/component-types-sb";
-
+import Toolbar from "../components/Toolbar.astro";
 interface Props {
   blok: HeaderStoryblok;
   path: string;
@@ -74,11 +74,14 @@ function getNavigationItems(segmentId: number) {
 
 <header class="bg-petrol" {...storyblokEditable(blok)}>
   <div class="container mx-auto max-w-screen-lg">
-    <div class="relative bg-gelb w-36 py-5">
-      <a href="/" class="logo">
-        <InlineIcon filename={blok.logo.filename} />
-        <span class="sr-only">comdirect</span>
-      </a>
+    <div class="flex justify-between">
+      <div class="relative bg-gelb w-36 py-5">
+        <a href="/" class="logo">
+          <InlineIcon filename={blok.logo.filename} />
+          <span class="sr-only">comdirect</span>
+        </a>
+      </div>
+      <Toolbar />
     </div>
     <nav>
       <ul class="flex flex-col lg:flex-row lg:gap-x-2 mt-2 flex-wrap">
